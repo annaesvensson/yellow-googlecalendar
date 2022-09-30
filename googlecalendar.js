@@ -1,4 +1,4 @@
-// Googlecalendar extension, https://github.com/datenstrom/yellow-extensions/tree/master/source/googlecalendar
+// Googlecalendar extension, https://github.com/annaesvensson/yellow-googlecalendar
 
 function GoogleCalendar(element, options) {
     this.element = element;

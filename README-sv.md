@@ -62,7 +62,7 @@ Följande inställningar kan konfigureras i filen `system/extensions/yellow-syst
 
 ## Installation
 
-[Ladda ner tillägg](https://github.com/datenstrom/yellow-extensions/raw/master/downloads/googlecalendar.zip) och kopiera zip-fil till din `system/extensions` mapp. Högerklicka om du använder Safari.
+[Ladda ner tillägg](https://github.com/annaesvensson/yellow-googlecalendar/archive/main.zip) och kopiera zip-fil till din `system/extensions` mapp. Högerklicka om du använder Safari.
 
 Detta tilläg använder [Google-kalender](https://calendar.google.com/). Tjänsteleverantören samlar in personuppgifter och använder cookies.
 

@@ -1,5 +1,5 @@
 <?php
-// Googlecalendar extension, https://github.com/datenstrom/yellow-extensions/tree/master/source/googlecalendar
+// Googlecalendar extension, https://github.com/annaesvensson/yellow-googlecalendar
 
 class YellowGooglecalendar {
     const VERSION = "0.8.13";
