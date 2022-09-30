@@ -1,0 +1,8 @@
+/* Googlecalendar extension, https://github.com/datenstrom/yellow-extensions/tree/master/source/googlecalendar */
+
+.googlecalendar .events .description {
+    display: block;
+}
+.googlecalendar .events .date {
+    display: block;
+}
