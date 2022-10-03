@@ -68,4 +68,4 @@ Detta tilläg använder [Google-kalender](https://calendar.google.com/). Tjänst
 
 ## Utvecklare
 
-Datenstrom. [Få hjälp](https://datenstrom.se/sv/yellow/help/).
+Anna Svensson. [Få hjälp](https://datenstrom.se/sv/yellow/help/).

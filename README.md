@@ -68,4 +68,4 @@ This extension uses [Google calendar](https://calendar.google.com/). The service
 
 ## Developer
 
-Datenstrom. [Get help](https://datenstrom.se/yellow/help/).
+Anna Svensson. [Get help](https://datenstrom.se/yellow/help/).

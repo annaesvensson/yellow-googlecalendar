@@ -68,4 +68,4 @@ Diese Erweiterung verwendet [Google-Kalender](https://calendar.google.com/). Der
 
 ## Entwickler
 
-Datenstrom. [Hilfe finden](https://datenstrom.se/de/yellow/help/).
+Anna Svensson. [Hilfe finden](https://datenstrom.se/de/yellow/help/).
