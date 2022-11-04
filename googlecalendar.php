@@ -2,7 +2,7 @@
 // Googlecalendar extension, https://github.com/annaesvensson/yellow-googlecalendar
 
 class YellowGooglecalendar {
-    const VERSION = "0.8.13";
+    const VERSION = "0.8.14";
     public $yellow;         // access to API
     
     // Handle initialisation
@@ -20,9 +20,9 @@ class YellowGooglecalendar {
         if ($name=="googlecalendar" && ($type=="block" || $type=="inline")) {
             list($id, $mode, $date, $style, $width, $height) = $this->yellow->toolbox->getTextArguments($text);
             list($timestamp, $entriesMax) = $this->getTimestampAndEntries($date);
-            if (empty($mode)) $mode = $this->yellow->system->get("googlecalendarMode");
-            if (empty($entriesMax)) $entriesMax = $this->yellow->system->get("googlecalendarEntriesMax");
-            if (empty($style)) $style = $this->yellow->system->get("googlecalendarStyle");
+            if (is_string_empty($mode)) $mode = $this->yellow->system->get("googlecalendarMode");
+            if (is_string_empty($entriesMax)) $entriesMax = $this->yellow->system->get("googlecalendarEntriesMax");
+            if (is_string_empty($style)) $style = $this->yellow->system->get("googlecalendarStyle");
             $language = $page->get("language");
             $timeZone = $this->yellow->system->get("coreTimezone");
             $timeZoneHelper = new DateTime("now", new DateTimeZone($timeZone));
@@ -67,7 +67,7 @@ class YellowGooglecalendar {
     // Return calendar timestamp and entries
     public function getTimestampAndEntries($date) {
         if (preg_match("/^(.*?)#([0-9]+)$/", $date, $matches)) {
-            $timestamp = empty($matches[1]) ? time() : strtotime($matches[1]);
+            $timestamp = is_string_empty($matches[1]) ? time() : strtotime($matches[1]);
             $entriesMax = intval($matches[2]);
         } else {
             if (intval($date)>999) {
