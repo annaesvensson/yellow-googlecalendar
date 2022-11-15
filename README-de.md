@@ -20,7 +20,7 @@ Die folgenden Argumente sind verfügbar, alle bis auf das erste Argument sind op
 
 ## Wie man einen Montatskalender einbindet
 
-Erstelle eine `[googlecalendarweek]`-Abkürzung um einen Monat anzuzeigen.
+Erstelle eine `[googlecalendarmonth]`-Abkürzung um einen Monat anzuzeigen.
 
 Die folgenden Argumente sind verfügbar, alle bis auf das erste Argument sind optional:
 

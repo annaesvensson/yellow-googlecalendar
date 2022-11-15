@@ -32,7 +32,7 @@ Följande argument är tillgängliga, alla utom det första argumentet är valfr
 
 ## Hur man bäddar in en evenemangskalender
 
-Skapa en `[googlecalendarmonth]` förkortning för att visa en lista.
+Skapa en `[googlecalendarevents]` förkortning för att visa en lista.
 
 Följande argument är tillgängliga, alla utom det första argumentet är valfria:
 
