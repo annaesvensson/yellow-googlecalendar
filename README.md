@@ -1,64 +1,90 @@
 <p align="right"><a href="README-de.md">Deutsch</a> &nbsp; <a href="README.md">English</a> &nbsp; <a href="README-sv.md">Svenska</a></p>
 
-# Googlecalendar 0.8.14
+# Googlecalendar 0.8.15
 
 Embed Google calendar.
 
 <p align="center"><img src="googlecalendar-screenshot.png?raw=true" alt="Screenshot"></p>
 
-## How to embed a calendar
+## How to embed a weekly calendar
 
-Create a `[googlecalendar]` shortcut.
+Create a `[googlecalendarweek]` shortcut to show a week.
 
 The following arguments are available, all but the first argument are optional:
 
 `Id` = public [Google calendar](https://calendar.google.com/)  
-`Mode` = calendar mode, e.g. `week`, `month`, `events`, `agenda`  
-`Date` = start date or number of entries, YYYY-MM-DD format  
+`Theme` = calendar theme, currently `light` only
 `Style` = calendar style, e.g. `left`, `center`, `right`  
 `Width` = calendar width, pixel or percent  
 `Height` = calendar height, pixel or percent  
 
+## How to embed a monthly calendar
+
+Create a `[googlecalendarmonth]` shortcut to show a month.
+
+The following arguments are available, all but the first argument are optional:
+
+`Id` = public [Google calendar](https://calendar.google.com/)  
+`Theme` = calendar theme, currently `light` only
+`Style` = calendar style, e.g. `left`, `center`, `right`  
+`Width` = calendar width, pixel or percent  
+`Height` = calendar height, pixel or percent  
+
+## How to embed an events calendar
+
+Create a `[googlecalendarevents]` shortcut to show a list.
+
+The following arguments are available, all but the first argument are optional:
+
+`Id` = public [Google calendar](https://calendar.google.com/)  
+`Date` = start date, YYYY-MM-DD format
+`EntriesMax` = number of entries to show per events calendar, 0 for unlimited    
+
 ## Examples
 
-Embedding a calendar, different calendars:
+Embedding a weekly calendar, different calendars:
 
-    [googlecalendar en.uk#holiday]
-    [googlecalendar de.german#holiday]
-    [googlecalendar sv.swedish#holiday]
+    [googlecalendarweek en.uk#holiday]
+    [googlecalendarweek de.german#holiday]
+    [googlecalendarweek sv.swedish#holiday]
 
-Embedding a calendar, different modes:
+Embedding a weekly calendar, different sizes:
 
-    [googlecalendar en.uk#holiday month]
-    [googlecalendar en.uk#holiday events]
-    [googlecalendar en.uk#holiday agenda]
+    [googlecalendarweek sv.swedish#holiday light right 50%]
+    [googlecalendarweek sv.swedish#holiday light right 240 240]
+    [googlecalendarweek sv.swedish#holiday light right 480 480]
 
-Embedding a calendar, different dates:
+Embedding a monthly calendar, different calendars:
 
-    [googlecalendar en.uk#holiday month 2021-06-01]
-    [googlecalendar en.uk#holiday month 2021-09-01]
-    [googlecalendar en.uk#holiday month 2021-12-01]
+    [googlecalendarmonth en.uk#holiday]
+    [googlecalendarmonth de.german#holiday]
+    [googlecalendarmonth sv.swedish#holiday]
 
-Embedding a calendar, different sizes:
+Embedding a monthly calendar, different sizes:
 
-    [googlecalendar en.uk#holiday month 2021-06-01 right 50%]
-    [googlecalendar en.uk#holiday month 2021-06-01 right 240 240]
-    [googlecalendar en.uk#holiday month 2021-06-01 right 480 480]
+    [googlecalendarmonth sv.swedish#holiday light right 50%]
+    [googlecalendarmonth sv.swedish#holiday light right 240 240]
+    [googlecalendarmonth sv.swedish#holiday light right 480 480]
 
-Embedding a calendar, different sizes for the current date:
+Embedding an events calendar, different calendars:
 
-    [googlecalendar en.uk#holiday month - right 50%]
-    [googlecalendar en.uk#holiday month - right 240 240]
-    [googlecalendar en.uk#holiday month - right 480 480]
+    [googlecalendarevents en.uk#holiday]
+    [googlecalendarevents de.german#holiday]
+    [googlecalendarevents sv.swedish#holiday]
+
+Embedding an events calendar, different start dates and numbers of entries:
+
+    [googlecalendarevents sv.swedish#holiday 2022-06-01 5]
+    [googlecalendarevents sv.swedish#holiday 2022-09-01 10]
+    [googlecalendarevents sv.swedish#holiday 2022-12-01 15]
 
 ## Settings
 
 The following settings can be configured in file `system/extensions/yellow-system.ini`:
 
-`GooglecalendarMode` = calendar mode, e.g. `week`, `month`, `events`, `agenda`  
-`GooglecalendarEntriesMax` = number of entries to show per shortcut, for `events` or `agenda`  
 `GooglecalendarStyle` = calendar style, e.g. `flexible`  
 `GooglecalendarApiKey` = your Google API key  
+`GooglecalendarEntriesMax` = number of entries to show per events calendar  
 
 ## Installation
 

@@ -1,64 +1,90 @@
 <p align="right"><a href="README-de.md">Deutsch</a> &nbsp; <a href="README.md">English</a> &nbsp; <a href="README-sv.md">Svenska</a></p>
 
-# Googlecalendar 0.8.14
+# Googlecalendar 0.8.15
 
 Google-Kalender einbinden.
 
 <p align="center"><img src="googlecalendar-screenshot.png?raw=true" alt="Bildschirmfoto"></p>
 
-## Wie man einen Kalender einbindet
+## Wie man einen Wochenkalender einbindet
 
-Erstelle eine `[googlecalendar]`-Abkürzung.
+Erstelle eine `[googlecalendarweek]`-Abkürzung um eine Woche anzuzeigen.
 
 Die folgenden Argumente sind verfügbar, alle bis auf das erste Argument sind optional:
 
 `Id` = öffentlicher [Google-Kalender](https://calendar.google.com/)  
-`Mode` = Kalendermodus, z.B. `week`, `month`, `events`, `agenda`  
-`Date` = Startdatum oder Anzahl der Einträge, JJJJ-MM-TT Format  
+`Theme` = Kalendertheme, momentan nur `light`  
 `Style` = Kalenderstil, z.B. `left`, `center`, `right`  
 `Width` = Kalenderbreite, Pixel oder Prozent  
 `Height` = Kalenderhöhe, Pixel oder Prozent  
 
+## Wie man einen Montatskalender einbindet
+
+Erstelle eine `[googlecalendarweek]`-Abkürzung um einen Monat anzuzeigen.
+
+Die folgenden Argumente sind verfügbar, alle bis auf das erste Argument sind optional:
+
+`Id` = öffentlicher [Google-Kalender](https://calendar.google.com/)  
+`Theme` = Kalendertheme, momentan nur `light`  
+`Style` = Kalenderstil, z.B. `left`, `center`, `right`  
+`Width` = Kalenderbreite, Pixel oder Prozent  
+`Height` = Kalenderhöhe, Pixel oder Prozent  
+
+## Wie man einen Veranstaltungskalender einbindet
+
+Erstelle eine `[googlecalendarevents]`-Abkürzung um eine Liste anzuzeigen.
+
+Die folgenden Argumente sind verfügbar, alle bis auf das erste Argument sind optional:
+
+`Id` = öffentlicher [Google-Kalender](https://calendar.google.com/)  
+`Date` = Startdatum, JJJJ-MM-TT Format  
+`EntriesMax` = Anzahl der Einträge pro Veranstaltungskalender, 0 für unbegrenzt  
+
 ## Beispiele
 
-Kalender einbinden, unterschiedliche Kalender:
+Wochenkalender einbinden, unterschiedliche Kalender:
 
-    [googlecalendar en.uk#holiday]
-    [googlecalendar de.german#holiday]
-    [googlecalendar sv.swedish#holiday]
+    [googlecalendarweek en.uk#holiday]
+    [googlecalendarweek de.german#holiday]
+    [googlecalendarweek sv.swedish#holiday]
 
-Kalender einbinden, unterschiedlicher Modus:
+Wochenkalender einbinden, unterschiedliche Größen:
 
-    [googlecalendar de.german#holiday month]
-    [googlecalendar de.german#holiday events]
-    [googlecalendar de.german#holiday agenda]
+    [googlecalendarweek sv.swedish#holiday light right 50%]
+    [googlecalendarweek sv.swedish#holiday light right 240 240]
+    [googlecalendarweek sv.swedish#holiday light right 480 480]
 
-Kalender einbinden, unterschiedliches Datum:
+Monatskalender einbinden, unterschiedliche Kalender:
 
-    [googlecalendar de.german#holiday month 2021-06-01]
-    [googlecalendar de.german#holiday month 2021-09-01]
-    [googlecalendar de.german#holiday month 2021-12-01]
+    [googlecalendarmonth en.uk#holiday]
+    [googlecalendarmonth de.german#holiday]
+    [googlecalendarmonth sv.swedish#holiday]
 
-Kalender einbinden, unterschiedliche Größen:
+Monatskalender einbinden, unterschiedliche Größen:
 
-    [googlecalendar de.german#holiday month 2021-06-01 right 50%]
-    [googlecalendar de.german#holiday month 2021-06-01 right 240 240]
-    [googlecalendar de.german#holiday month 2021-06-01 right 480 480]
+    [googlecalendarmonth sv.swedish#holiday light right 50%]
+    [googlecalendarmonth sv.swedish#holiday light right 240 240]
+    [googlecalendarmonth sv.swedish#holiday light right 480 480]
 
-Kalender einbinden, unterschiedliche Größen für das aktuelle Datum:
+Veranstaltungskalender einbinden, unterschiedliche Kalender:
 
-    [googlecalendar de.german#holiday month - right 50%]
-    [googlecalendar de.german#holiday month - right 240 240]
-    [googlecalendar de.german#holiday month - right 480 480]
+    [googlecalendarevents en.uk#holiday]
+    [googlecalendarevents de.german#holiday]
+    [googlecalendarevents sv.swedish#holiday]
+
+Veranstaltungskalender einbinden, unterschiedliche Startdaten und Anzahl Einträge:
+
+    [googlecalendarevents sv.swedish#holiday 2022-06-01 5]
+    [googlecalendarevents sv.swedish#holiday 2022-09-01 10]
+    [googlecalendarevents sv.swedish#holiday 2022-12-01 15]
 
 ## Einstellungen
 
 Die folgenden Einstellungen können in der Datei `system/extensions/yellow-system.ini` vorgenommen werden:
 
-`GooglecalendarMode` = Kalendermodus, z.B. `week`, `month`, `events`, `agenda`  
-`GooglecalendarEntriesMax` = Anzahl der Einträge pro Abkürzung, für `events` oder `agenda`  
 `GooglecalendarStyle` = Kalenderstil, z.B. `flexible`  
 `GooglecalendarApiKey` = dein Google-API-Schlüssel  
+`GooglecalendarEntriesMax` = Anzahl der Einträge pro Veranstaltungskalender  
 
 ## Installation
 

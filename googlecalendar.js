@@ -20,52 +20,16 @@ GoogleCalendar.prototype = {
             for (var i=0; i<events.items.length; i++) {
                 var item = events.items[i];
                 var summary = item.summary;
-                var description = item.description ? item.description : "";
+                var description = item.description ? this.getFirstLine(item.description) : "";
+                var location = item.location ? this.getFirstLine(item.location) : "";
                 var format = item.start.date ? this.options.dateFormatMedium : this.options.dateFormatLong;
                 var date = item.start.date ? item.start.date : item.start.dateTime;
-                var location = item.location ? item.location : "";
                 var li = document.createElement("li");
                 li.innerHTML =
                 "<span class=\"summary\">"+this.encodeHtml(summary)+"</span>"+
                 (location ? ", <span class=\"location\">"+this.encodeHtml(location)+"</span>" : "")+
                 " <span class=\"description\">"+this.encodeHtml(description)+"</span>"+
                 " <span class=\"date\">"+this.encodeHtml(this.formatDate(format, new Date(date)))+"</span>";
-                ul.appendChild(li);
-            }
-            this.element.appendChild(ul);
-        }
-    },
-
-    // Show calendar agenda
-    onShowAgenda: function(responseText, status) {
-        var events = JSON.parse(responseText);
-        if (events.items.length>0) {
-            var section;
-            var ul = document.createElement("ul");
-            ul.className = this.options.mode;
-            for (var i=0; i<events.items.length; i++) {
-                var item = events.items[i];
-                var summary = item.summary;
-                var description = item.description ? item.description : "";
-                var date = item.start.date ? item.start.date : item.start.dateTime;
-                var time = item.start.dateTime ? item.start.dateTime : "";
-                var location = item.location ? item.location : "";
-                var sectionNew = this.formatDate(this.options.dateFormatMedium, new Date(date));
-                if (section!=sectionNew) {
-                    section = sectionNew;
-                    var header = document.createElement("h2");
-                    header.className = this.options.mode;
-                    header.innerHTML = this.encodeHtml(section);
-                    this.element.appendChild(ul);
-                    this.element.appendChild(header);
-                    ul = document.createElement("ul");
-                    ul.className = this.options.mode;
-                }
-                var li = document.createElement("li");
-                li.innerHTML =
-                "<span class=\"time\">"+this.encodeHtml(time ? this.formatDate(this.options.timeFormatShort, new Date(time)) : "")+"</span>"+
-                " <span class=\"summary\">"+this.encodeHtml(summary)+"</span>"+
-                (location ? ", <span class=\"location\">"+this.encodeHtml(location)+"</span>" : "");
                 ul.appendChild(li);
             }
             this.element.appendChild(ul);
@@ -83,7 +47,6 @@ GoogleCalendar.prototype = {
         var url = "https://www.googleapis.com/calendar/v3/calendars/"+encodeURIComponent(this.options.calendar)+"/events?timeZone="+encodeURIComponent(this.options.timeZone)+"&timeMin="+encodeURIComponent(this.options.timeMin)+"&maxResults="+encodeURIComponent(this.options.entriesMax)+"&singleEvents=true&orderBy=startTime&fields=items(description%2Csummary%2Clocation%2Cstart)&key="+encodeURIComponent(this.options.apiKey);
         switch (this.options.mode) {
             case "events":  this.requestUrl(url, this.onShowEvents, this.onShowError); break;
-            case "agenda":  this.requestUrl(url, this.onShowAgenda, this.onShowError); break;
         }
     },
     
@@ -166,6 +129,12 @@ GoogleCalendar.prototype = {
             }
         }
         return output;
+    },
+    
+    // Return first line
+    getFirstLine: function(string) {
+        var matches = string.match(/^(.+?)[\r\n]+/);
+        return matches ? matches[1] : string;
     },
     
     // Encode HTML special characters

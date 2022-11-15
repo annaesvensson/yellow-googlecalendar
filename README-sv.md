@@ -1,64 +1,90 @@
 <p align="right"><a href="README-de.md">Deutsch</a> &nbsp; <a href="README.md">English</a> &nbsp; <a href="README-sv.md">Svenska</a></p>
 
-# Googlecalendar 0.8.14
+# Googlecalendar 0.8.15
 
 Bädda in Google-kalender.
 
 <p align="center"><img src="googlecalendar-screenshot.png?raw=true" alt="Skärmdump"></p>
 
-## Hur man bäddar in en kalender
+## Hur man bäddar in en veckokalender
 
-Skapa en `[googlecalendar]` förkortning.
+Skapa en `[googlecalendarweek]` förkortning för att visa en vecka.
 
 Följande argument är tillgängliga, alla utom det första argumentet är valfria:
 
 `Id` = offentlig [Google-kalender](https://calendar.google.com/)  
-`Mode` = kalenderläge, t.ex. `week`, `month`, `events`, `agenda`  
-`Date` = startdatum eller antal inlägg, ÅÅÅÅ-MM-DD format  
+`Theme` = kalendertema, för närvarande endast `light`  
 `Style` = kalenderstil, t.ex. `left`, `center`, `right`  
 `Width` = kalendebredd, pixel eller procent  
 `Height` = kalendehöjd, pixel eller procent  
 
+## Hur man bäddar in en månadskalender
+
+Skapa en `[googlecalendarmonth]` förkortning för att visa en månad.
+
+Följande argument är tillgängliga, alla utom det första argumentet är valfria:
+
+`Id` = offentlig [Google-kalender](https://calendar.google.com/)  
+`Theme` = kalendertema, för närvarande endast `light`  
+`Style` = kalenderstil, t.ex. `left`, `center`, `right`  
+`Width` = kalendebredd, pixel eller procent  
+`Height` = kalendehöjd, pixel eller procent  
+
+## Hur man bäddar in en evenemangskalender
+
+Skapa en `[googlecalendarmonth]` förkortning för att visa en lista.
+
+Följande argument är tillgängliga, alla utom det första argumentet är valfria:
+
+`Id` = offentlig [Google-kalender](https://calendar.google.com/)  
+`Date` = startdatum, ÅÅÅÅ-MM-DD format  
+`EntriesMax` = antal inlägg att visa per evenemangskalender, 0 för obegränsad  
+
 ## Exempel
 
-Bädda in en kalender, olika kalendrar:
+Bädda in en veckokalender, olika kalendrar:
 
-    [googlecalendar en.uk#holiday]
-    [googlecalendar de.german#holiday]
-    [googlecalendar sv.swedish#holiday]
+    [googlecalendarweek en.uk#holiday]
+    [googlecalendarweek de.german#holiday]
+    [googlecalendarweek sv.swedish#holiday]
 
-Bädda in en kalender, olika lägen:
+Bädda in en veckokalender, olika storlekar:
 
-    [googlecalendar sv.swedish#holiday month]
-    [googlecalendar sv.swedish#holiday events]
-    [googlecalendar sv.swedish#holiday agenda]
+    [googlecalendarweek sv.swedish#holiday light right 50%]
+    [googlecalendarweek sv.swedish#holiday light right 240 240]
+    [googlecalendarweek sv.swedish#holiday light right 480 480]
 
-Bädda in en kalender, olika datum:
+Bädda in en månadskalender, olika kalendrar:
 
-    [googlecalendar sv.swedish#holiday month 2021-06-01]
-    [googlecalendar sv.swedish#holiday month 2021-09-01]
-    [googlecalendar sv.swedish#holiday month 2021-12-01]
+    [googlecalendarmonth en.uk#holiday]
+    [googlecalendarmonth de.german#holiday]
+    [googlecalendarmonth sv.swedish#holiday]
 
-Bädda in en kalender, olika storlekar:
+Bädda in en månadskalender, olika storlekar:
 
-    [googlecalendar sv.swedish#holiday month 2021-06-01 right 50%]
-    [googlecalendar sv.swedish#holiday month 2021-06-01 right 240 240]
-    [googlecalendar sv.swedish#holiday month 2021-06-01 right 480 480]
+    [googlecalendarmonth sv.swedish#holiday light right 50%]
+    [googlecalendarmonth sv.swedish#holiday light right 240 240]
+    [googlecalendarmonth sv.swedish#holiday light right 480 480]
 
-Bädda in en kalender, olika storlekar för aktuella datumet:
+Bädda in en evenemangskalender, olika kalendrar:
 
-    [googlecalendar sv.swedish#holiday month - right 50%]
-    [googlecalendar sv.swedish#holiday month - right 240 240]
-    [googlecalendar sv.swedish#holiday month - right 480 480]
+    [googlecalendarevents en.uk#holiday]
+    [googlecalendarevents de.german#holiday]
+    [googlecalendarevents sv.swedish#holiday]
+
+Bädda in en evenemangskalender, olika startdatum och antal inlägg:
+
+    [googlecalendarevents sv.swedish#holiday 2022-06-01 5]
+    [googlecalendarevents sv.swedish#holiday 2022-09-01 10]
+    [googlecalendarevents sv.swedish#holiday 2022-12-01 15]
 
 ## Inställningar
 
 Följande inställningar kan konfigureras i filen `system/extensions/yellow-system.ini`:
 
-`GooglecalendarMode` = kalenderläge, t.ex. `week`, `month`, `events`, `agenda`  
-`GooglecalendarEntriesMax` = antal inlägg att visa per förkortning, för `events` eller `agenda`  
 `GooglecalendarStyle` = kalenderstil, t.ex. `flexible`  
 `GooglecalendarApiKey` = din Google API-nyckel  
+`GooglecalendarEntriesMax` = antal inlägg att visa per evenemangskalender  
 
 ## Installation
 

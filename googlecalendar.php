@@ -2,27 +2,39 @@
 // Googlecalendar extension, https://github.com/annaesvensson/yellow-googlecalendar
 
 class YellowGooglecalendar {
-    const VERSION = "0.8.14";
+    const VERSION = "0.8.15";
     public $yellow;         // access to API
     
     // Handle initialisation
     public function onLoad($yellow) {
         $this->yellow = $yellow;
-        $this->yellow->system->setDefault("googlecalendarMode", "month");
-        $this->yellow->system->setDefault("googlecalendarEntriesMax", "5");
         $this->yellow->system->setDefault("googlecalendarStyle", "flexible");
         $this->yellow->system->setDefault("googlecalendarApiKey", "AIzaSyBC0iK5aceH8C5EguUsS98btnsDoA1PVSo");
+        $this->yellow->system->setDefault("googlecalendarEntriesMax", "5");
     }
     
     // Handle page content of shortcut
     public function onParseContentShortcut($page, $name, $text, $type) {
         $output = null;
-        if ($name=="googlecalendar" && ($type=="block" || $type=="inline")) {
-            list($id, $mode, $date, $style, $width, $height) = $this->yellow->toolbox->getTextArguments($text);
-            list($timestamp, $entriesMax) = $this->getTimestampAndEntries($date);
-            if (is_string_empty($mode)) $mode = $this->yellow->system->get("googlecalendarMode");
-            if (is_string_empty($entriesMax)) $entriesMax = $this->yellow->system->get("googlecalendarEntriesMax");
+        if (($name=="googlecalendarweek" || $name=="googlecalendarmonth") && ($type=="block" || $type=="inline")) {
+            list($id, $theme, $style, $width, $height) = $this->yellow->toolbox->getTextArguments($text);
             if (is_string_empty($style)) $style = $this->yellow->system->get("googlecalendarStyle");
+            $timestamp = time();
+            $mode = $name=="googlecalendarweek" ? "week" : "month";
+            $language = $page->get("language");
+            $timeZone = $this->yellow->system->get("coreTimezone");
+            $dateWeekdays = $this->yellow->language->getText("coreDateWeekdays", $language);
+            $dateWeekstart = $this->yellow->language->getText("coreDateWeekstart", $language);
+            $apiKey = $this->yellow->system->get("googlecalendarApiKey");
+            $output = "<div class=\"".htmlspecialchars($style)."\">";
+            $output .= "<iframe src=\"https://calendar.google.com/calendar/embed?mode=".rawurlencode($mode)."&amp;dates=".rawurlencode($this->getCalendarDate($timestamp, false))."&amp;ctz=".rawurlencode($timeZone)."&amp;wkst=".rawurlencode($this->getCalendarStart($dateWeekdays, $dateWeekstart))."&amp;hl=".rawurlencode($language)."&amp;showTitle=0&amp;showNav=1&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;showDate=1&amp;src=".rawurlencode($this->getCalendarSource($id))."\" frameborder=\"0\"";
+            if ($width && $height) $output .= " width=\"".htmlspecialchars($width)."\" height=\"".htmlspecialchars($height)."\"";
+            $output .= "></iframe></div>";
+        }
+        if ($name=="googlecalendarevents" && ($type=="block" || $type=="inline")) {
+            list($id, $date, $entriesMax) = $this->yellow->toolbox->getTextArguments($text);
+            if (is_string_empty($entriesMax)) $entriesMax = $this->yellow->system->get("googlecalendarEntriesMax");
+            $timestamp = is_string_empty($date) ? time() : strtotime($date);
             $language = $page->get("language");
             $timeZone = $this->yellow->system->get("coreTimezone");
             $timeZoneHelper = new DateTime("now", new DateTimeZone($timeZone));
@@ -38,17 +50,8 @@ class YellowGooglecalendar {
             $timeFormatMedium = $this->yellow->language->getText("coreTimeFormatMedium", $language);
             $timeFormatLong = $this->yellow->language->getText("coreTimeFormatLong", $language);
             $apiKey = $this->yellow->system->get("googlecalendarApiKey");
-            if ($mode=="week" || $mode=="month") {
-                $output = "<div class=\"".htmlspecialchars($style)."\">";
-                $output .= "<iframe src=\"https://calendar.google.com/calendar/embed?mode=".rawurlencode($mode)."&amp;dates=".rawurlencode($this->getCalendarDate($timestamp, false))."&amp;ctz=".rawurlencode($timeZone)."&amp;wkst=".rawurlencode($this->getCalendarStart($dateWeekdays, $dateWeekstart))."&amp;hl=".rawurlencode($language)."&amp;showTitle=0&amp;showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;showDate=1&amp;src=".rawurlencode($this->getCalendarSource($id))."\" frameborder=\"0\"";
-                if ($width && $height) $output .= " width=\"".htmlspecialchars($width)."\" height=\"".htmlspecialchars($height)."\"";
-                $output .= "></iframe></div>";
-            }
-            if ($mode=="events" || $mode=="agenda") {
-                if ($style=="flexible") $style = "googlecalendar";
-                $output = "<div class=\"".htmlspecialchars($style)."\" data-mode=\"".htmlspecialchars($mode)."\" data-timemin=\"".htmlspecialchars($this->getCalendarDate($timestamp))."\" data-timezone=\"".htmlspecialchars($timeZone)."\" data-timezoneOffset=\"".htmlspecialchars($timeZoneOffset)."\" data-datemonthsnominative=\"".htmlspecialchars($dateMonthsNominative)."\" data-datemonthsgenitive=\"".htmlspecialchars($dateMonthsGenitive)."\" data-dateweekdays=\"".htmlspecialchars($dateWeekdays)."\" data-dateformatshort=\"".htmlspecialchars($dateFormatShort)."\" data-dateformatmedium=\"".htmlspecialchars($dateFormatMedium)."\" data-dateformatlong=\"".htmlspecialchars($dateFormatLong)."\" data-timeformatshort=\"".htmlspecialchars($timeFormatShort)."\" data-timeformatmedium=\"".htmlspecialchars($timeFormatMedium)."\" data-timeformatLong=\"".htmlspecialchars($timeFormatLong)."\" data-entriesmax=\"".htmlspecialchars($entriesMax)."\" data-calendar=\"".htmlspecialchars($this->getCalendarSource($id))."\" data-apikey=\"".htmlspecialchars($apiKey)."\">";
-                $output .= "</div>";
-            }
+            $output = "<div class=\"googlecalendar\" data-mode=\"events\" data-timemin=\"".htmlspecialchars($this->getCalendarDate($timestamp))."\" data-timezone=\"".htmlspecialchars($timeZone)."\" data-timezoneOffset=\"".htmlspecialchars($timeZoneOffset)."\" data-datemonthsnominative=\"".htmlspecialchars($dateMonthsNominative)."\" data-datemonthsgenitive=\"".htmlspecialchars($dateMonthsGenitive)."\" data-dateweekdays=\"".htmlspecialchars($dateWeekdays)."\" data-dateformatshort=\"".htmlspecialchars($dateFormatShort)."\" data-dateformatmedium=\"".htmlspecialchars($dateFormatMedium)."\" data-dateformatlong=\"".htmlspecialchars($dateFormatLong)."\" data-timeformatshort=\"".htmlspecialchars($timeFormatShort)."\" data-timeformatmedium=\"".htmlspecialchars($timeFormatMedium)."\" data-timeformatLong=\"".htmlspecialchars($timeFormatLong)."\" data-entriesmax=\"".htmlspecialchars($entriesMax)."\" data-calendar=\"".htmlspecialchars($this->getCalendarSource($id))."\" data-apikey=\"".htmlspecialchars($apiKey)."\">";
+            $output .= "</div>";
         }
         return $output;
     }
@@ -62,23 +65,6 @@ class YellowGooglecalendar {
             $output .= "<script type=\"text/javascript\" defer=\"defer\" src=\"{$extensionLocation}googlecalendar.js\"></script>\n";
         }
         return $output;
-    }
-
-    // Return calendar timestamp and entries
-    public function getTimestampAndEntries($date) {
-        if (preg_match("/^(.*?)#([0-9]+)$/", $date, $matches)) {
-            $timestamp = is_string_empty($matches[1]) ? time() : strtotime($matches[1]);
-            $entriesMax = intval($matches[2]);
-        } else {
-            if (intval($date)>999) {
-                $timestamp = strtotime($date);
-                $entriesMax = 0;
-            } else {
-                $timestamp = time();
-                $entriesMax = intval($date);
-            }
-        }
-        return array($timestamp, $entriesMax);
     }
 
     // Return calendar source
