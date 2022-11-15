@@ -13,7 +13,7 @@ Create a `[googlecalendarweek]` shortcut to show a week.
 The following arguments are available, all but the first argument are optional:
 
 `Id` = public [Google calendar](https://calendar.google.com/)  
-`Theme` = calendar theme, currently `light` only
+`Theme` = calendar theme, currently `light` only  
 `Style` = calendar style, e.g. `left`, `center`, `right`  
 `Width` = calendar width, pixel or percent  
 `Height` = calendar height, pixel or percent  
@@ -25,7 +25,7 @@ Create a `[googlecalendarmonth]` shortcut to show a month.
 The following arguments are available, all but the first argument are optional:
 
 `Id` = public [Google calendar](https://calendar.google.com/)  
-`Theme` = calendar theme, currently `light` only
+`Theme` = calendar theme, currently `light` only  
 `Style` = calendar style, e.g. `left`, `center`, `right`  
 `Width` = calendar width, pixel or percent  
 `Height` = calendar height, pixel or percent  
@@ -37,8 +37,8 @@ Create a `[googlecalendarevents]` shortcut to show a list.
 The following arguments are available, all but the first argument are optional:
 
 `Id` = public [Google calendar](https://calendar.google.com/)  
-`Date` = start date, YYYY-MM-DD format
-`EntriesMax` = number of entries to show per events calendar, 0 for unlimited    
+`Date` = start date, YYYY-MM-DD format  
+`EntriesMax` = number of entries to show per events calendar, 0 for unlimited  
 
 ## Examples
 

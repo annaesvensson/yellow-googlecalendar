@@ -34,6 +34,7 @@ class YellowGooglecalendar {
         if ($name=="googlecalendarevents" && ($type=="block" || $type=="inline")) {
             list($id, $date, $entriesMax) = $this->yellow->toolbox->getTextArguments($text);
             if (is_string_empty($entriesMax)) $entriesMax = $this->yellow->system->get("googlecalendarEntriesMax");
+            if (intval($entriesMax)==0) $entriesMax = 999;
             $timestamp = is_string_empty($date) ? time() : strtotime($date);
             $language = $page->get("language");
             $timeZone = $this->yellow->system->get("coreTimezone");
