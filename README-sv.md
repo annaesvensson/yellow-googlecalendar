@@ -18,6 +18,8 @@ Följande argument är tillgängliga, alla utom det första argumentet är valfr
 `Width` = kalendebredd, pixel eller procent  
 `Height` = kalendehöjd, pixel eller procent  
 
+Du bör veta att tjänsteleverantören samlar in personuppgifter och använder cookies.
+
 ## Hur man bäddar in en månadskalender
 
 Skapa en `[googlecalendarmonth]` förkortning för att visa en månad.
@@ -30,6 +32,8 @@ Följande argument är tillgängliga, alla utom det första argumentet är valfr
 `Width` = kalendebredd, pixel eller procent  
 `Height` = kalendehöjd, pixel eller procent  
 
+Du bör veta att tjänsteleverantören samlar in personuppgifter och använder cookies.
+
 ## Hur man bäddar in en evenemangskalender
 
 Skapa en `[googlecalendarevents]` förkortning för att visa en lista.
@@ -39,6 +43,8 @@ Följande argument är tillgängliga, alla utom det första argumentet är valfr
 `Id` = offentlig [Google-kalender](https://calendar.google.com/)  
 `Date` = startdatum, ÅÅÅÅ-MM-DD format  
 `EntriesMax` = antal inlägg att visa per evenemangskalender, 0 för obegränsad  
+
+Du bör veta att tjänsteleverantören samlar in personuppgifter och använder cookies.
 
 ## Exempel
 
@@ -86,11 +92,13 @@ Följande inställningar kan konfigureras i filen `system/extensions/yellow-syst
 `GooglecalendarApiKey` = din Google API-nyckel  
 `GooglecalendarEntriesMax` = antal inlägg att visa per evenemangskalender  
 
+## Tack
+
+Detta tilläg använder [Google-kalender](https://calendar.google.com/). Tack för den kostnadsfria tjänsten.
+
 ## Installation
 
 [Ladda ner tillägg](https://github.com/annaesvensson/yellow-googlecalendar/archive/main.zip) och kopiera ZIP-fil till din `system/extensions` mapp. [Läs mer om tillägg](https://github.com/annaesvensson/yellow-update/tree/main/README-sv.md).
-
-Detta tilläg använder [Google-kalender](https://calendar.google.com/). Tjänsteleverantören samlar in personuppgifter och använder cookies.
 
 ## Utvecklare
 

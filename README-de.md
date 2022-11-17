@@ -18,6 +18,8 @@ Die folgenden Argumente sind verfügbar, alle bis auf das erste Argument sind op
 `Width` = Kalenderbreite, Pixel oder Prozent  
 `Height` = Kalenderhöhe, Pixel oder Prozent  
 
+Du solltest wissen, dass der Dienstanbieter personenbezogene Daten sammelt und Cookies benutzt.
+
 ## Wie man einen Montatskalender einbindet
 
 Erstelle eine `[googlecalendarmonth]`-Abkürzung um einen Monat anzuzeigen.
@@ -30,6 +32,8 @@ Die folgenden Argumente sind verfügbar, alle bis auf das erste Argument sind op
 `Width` = Kalenderbreite, Pixel oder Prozent  
 `Height` = Kalenderhöhe, Pixel oder Prozent  
 
+Du solltest wissen, dass der Dienstanbieter personenbezogene Daten sammelt und Cookies benutzt.
+
 ## Wie man einen Veranstaltungskalender einbindet
 
 Erstelle eine `[googlecalendarevents]`-Abkürzung um eine Liste anzuzeigen.
@@ -39,6 +43,8 @@ Die folgenden Argumente sind verfügbar, alle bis auf das erste Argument sind op
 `Id` = öffentlicher [Google-Kalender](https://calendar.google.com/)  
 `Date` = Startdatum, JJJJ-MM-TT Format  
 `EntriesMax` = Anzahl der Einträge pro Veranstaltungskalender, 0 für unbegrenzt  
+
+Du solltest wissen, dass der Dienstanbieter personenbezogene Daten sammelt und Cookies benutzt.
 
 ## Beispiele
 
@@ -86,11 +92,13 @@ Die folgenden Einstellungen können in der Datei `system/extensions/yellow-syste
 `GooglecalendarApiKey` = dein Google-API-Schlüssel  
 `GooglecalendarEntriesMax` = Anzahl der Einträge pro Veranstaltungskalender  
 
+## Danksagung
+
+Diese Erweiterung verwendet [Google-Kalender](https://calendar.google.com/). Danke für den kostenlosen Service.
+
 ## Installation
 
 [Erweiterung herunterladen](https://github.com/annaesvensson/yellow-googlecalendar/archive/main.zip) und die ZIP-Datei in dein `system/extensions`-Verzeichnis kopieren. [Weitere Informationen zu Erweiterungen](https://github.com/annaesvensson/yellow-update/tree/main/README-de.md).
-
-Diese Erweiterung verwendet [Google-Kalender](https://calendar.google.com/). Der Dienstanbieter sammelt personenbezogene Daten und benutzt Cookies.
 
 ## Entwickler
 

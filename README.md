@@ -18,6 +18,8 @@ The following arguments are available, all but the first argument are optional:
 `Width` = calendar width, pixel or percent  
 `Height` = calendar height, pixel or percent  
 
+You should know that the service provider collects personal data and uses cookies.
+
 ## How to embed a monthly calendar
 
 Create a `[googlecalendarmonth]` shortcut to show a month.
@@ -30,6 +32,8 @@ The following arguments are available, all but the first argument are optional:
 `Width` = calendar width, pixel or percent  
 `Height` = calendar height, pixel or percent  
 
+You should know that the service provider collects personal data and uses cookies.
+
 ## How to embed an events calendar
 
 Create a `[googlecalendarevents]` shortcut to show a list.
@@ -39,6 +43,8 @@ The following arguments are available, all but the first argument are optional:
 `Id` = public [Google calendar](https://calendar.google.com/)  
 `Date` = start date, YYYY-MM-DD format  
 `EntriesMax` = number of entries to show per events calendar, 0 for unlimited  
+
+You should know that the service provider collects personal data and uses cookies.
 
 ## Examples
 
@@ -86,11 +92,13 @@ The following settings can be configured in file `system/extensions/yellow-syste
 `GooglecalendarApiKey` = your Google API key  
 `GooglecalendarEntriesMax` = number of entries to show per events calendar  
 
+## Acknowledgments
+
+This extension uses [Google calendar](https://calendar.google.com/). Thank you for the free service.
+
 ## Installation
 
 [Download extension](https://github.com/annaesvensson/yellow-googlecalendar/archive/main.zip) and copy ZIP file into your `system/extensions` folder. [Learn more about extensions](https://github.com/annaesvensson/yellow-update).
-
-This extension uses [Google calendar](https://calendar.google.com/). The service provider collects personal data and uses cookies.
 
 ## Developer
 
