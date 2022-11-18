@@ -92,7 +92,7 @@ The following settings can be configured in file `system/extensions/yellow-syste
 `GooglecalendarApiKey` = your Google API key  
 `GooglecalendarEntriesMax` = number of entries to show per events calendar  
 
-## Acknowledgments
+## Acknowledgements
 
 This extension uses [Google calendar](https://calendar.google.com/). Thank you for the free service.
 
