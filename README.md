@@ -6,6 +6,10 @@ Embed Google calendar.
 
 <p align="center"><img src="googlecalendar-screenshot.png?raw=true" alt="Screenshot"></p>
 
+## How to install an extension
+
+[Download ZIP file](https://github.com/annaesvensson/yellow-googlecalendar/archive/main.zip) and copy it into your `system/extensions` folder. [Learn more about extensions](https://github.com/annaesvensson/yellow-update).
+
 ## How to embed a weekly calendar
 
 Create a `[googlecalendarweek]` shortcut to show a week.
@@ -95,10 +99,6 @@ The following settings can be configured in file `system/extensions/yellow-syste
 ## Acknowledgements
 
 This extension uses [Google calendar](https://calendar.google.com/). Thank you for the free service.
-
-## Installation
-
-[Download extension](https://github.com/annaesvensson/yellow-googlecalendar/archive/main.zip) and copy ZIP file into your `system/extensions` folder. [Learn more about extensions](https://github.com/annaesvensson/yellow-update).
 
 ## Developer
 

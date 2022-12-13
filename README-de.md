@@ -6,6 +6,10 @@ Google-Kalender einbinden.
 
 <p align="center"><img src="googlecalendar-screenshot.png?raw=true" alt="Bildschirmfoto"></p>
 
+## Wie man eine Erweiterung installiert
+
+[ZIP-Datei herunterladen](https://github.com/annaesvensson/yellow-googlecalendar/archive/main.zip) und in dein `system/extensions`-Verzeichnis kopieren. [Weitere Informationen zu Erweiterungen](https://github.com/annaesvensson/yellow-update/tree/main/README-de.md).
+
 ## Wie man einen Wochenkalender einbindet
 
 Erstelle eine `[googlecalendarweek]`-Abkürzung um eine Woche anzuzeigen.
@@ -95,10 +99,6 @@ Die folgenden Einstellungen können in der Datei `system/extensions/yellow-syste
 ## Danksagung
 
 Diese Erweiterung verwendet [Google-Kalender](https://calendar.google.com/). Danke für den kostenlosen Service.
-
-## Installation
-
-[Erweiterung herunterladen](https://github.com/annaesvensson/yellow-googlecalendar/archive/main.zip) und die ZIP-Datei in dein `system/extensions`-Verzeichnis kopieren. [Weitere Informationen zu Erweiterungen](https://github.com/annaesvensson/yellow-update/tree/main/README-de.md).
 
 ## Entwickler
 
