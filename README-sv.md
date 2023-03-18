@@ -1,6 +1,6 @@
 <p align="right"><a href="README-de.md">Deutsch</a> &nbsp; <a href="README.md">English</a> &nbsp; <a href="README-sv.md">Svenska</a></p>
 
-# Googlecalendar 0.8.15
+# Googlecalendar 0.8.16
 
 Bädda in Google-kalender.
 
@@ -46,7 +46,7 @@ Följande argument är tillgängliga, alla utom det första argumentet är valfr
 
 `Id` = offentlig [Google-kalender](https://calendar.google.com/)  
 `Date` = startdatum, ÅÅÅÅ-MM-DD format  
-`EntriesMax` = antal inlägg att visa per evenemangskalender, 0 för obegränsad  
+`Entries` = antal inlägg att visa per evenemangskalender  
 
 Du bör veta att tjänsteleverantören samlar in personuppgifter och använder cookies.
 
@@ -94,7 +94,7 @@ Följande inställningar kan konfigureras i filen `system/extensions/yellow-syst
 
 `GooglecalendarStyle` = kalenderstil, t.ex. `flexible`  
 `GooglecalendarApiKey` = din Google API-nyckel  
-`GooglecalendarEntriesMax` = antal inlägg att visa per evenemangskalender  
+`GooglecalendarEntries` = antal inlägg att visa per evenemangskalender  
 
 ## Tack
 

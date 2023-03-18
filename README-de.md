@@ -1,6 +1,6 @@
 <p align="right"><a href="README-de.md">Deutsch</a> &nbsp; <a href="README.md">English</a> &nbsp; <a href="README-sv.md">Svenska</a></p>
 
-# Googlecalendar 0.8.15
+# Googlecalendar 0.8.16
 
 Google-Kalender einbinden.
 
@@ -46,7 +46,7 @@ Die folgenden Argumente sind verfügbar, alle bis auf das erste Argument sind op
 
 `Id` = öffentlicher [Google-Kalender](https://calendar.google.com/)  
 `Date` = Startdatum, JJJJ-MM-TT Format  
-`EntriesMax` = Anzahl der Einträge pro Veranstaltungskalender, 0 für unbegrenzt  
+`Entries` = Anzahl der Einträge pro Veranstaltungskalender  
 
 Du solltest wissen, dass der Dienstanbieter personenbezogene Daten sammelt und Cookies benutzt.
 
@@ -94,7 +94,7 @@ Die folgenden Einstellungen können in der Datei `system/extensions/yellow-syste
 
 `GooglecalendarStyle` = Kalenderstil, z.B. `flexible`  
 `GooglecalendarApiKey` = dein Google-API-Schlüssel  
-`GooglecalendarEntriesMax` = Anzahl der Einträge pro Veranstaltungskalender  
+`GooglecalendarEntries` = Anzahl der Einträge pro Veranstaltungskalender  
 
 ## Danksagung
 

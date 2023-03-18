@@ -1,6 +1,6 @@
 <p align="right"><a href="README-de.md">Deutsch</a> &nbsp; <a href="README.md">English</a> &nbsp; <a href="README-sv.md">Svenska</a></p>
 
-# Googlecalendar 0.8.15
+# Googlecalendar 0.8.16
 
 Embed Google calendar.
 
@@ -46,7 +46,7 @@ The following arguments are available, all but the first argument are optional:
 
 `Id` = public [Google calendar](https://calendar.google.com/)  
 `Date` = start date, YYYY-MM-DD format  
-`EntriesMax` = number of entries to show per events calendar, 0 for unlimited  
+`Entries` = number of entries to show per events calendar  
 
 You should know that the service provider collects personal data and uses cookies.
 
@@ -94,7 +94,7 @@ The following settings can be configured in file `system/extensions/yellow-syste
 
 `GooglecalendarStyle` = calendar style, e.g. `flexible`  
 `GooglecalendarApiKey` = your Google API key  
-`GooglecalendarEntriesMax` = number of entries to show per events calendar  
+`GooglecalendarEntries` = number of entries to show per events calendar  
 
 ## Acknowledgements
 

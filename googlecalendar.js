@@ -5,7 +5,7 @@ function GoogleCalendar(element, options) {
     this.options = options ? options : this.parseOptions(element,
         ["mode", "timeZone", "timeZoneOffset", "dateMonthsNominative", "dateMonthsGenitive", "dateWeekdays",
          "dateFormatShort", "dateFormatMedium", "dateFormatLong", "timeFormatShort", "timeFormatMedium",
-         "timeFormatLong", "timeMin", "entriesMax", "calendar", "apiKey"]);
+         "timeFormatLong", "timeMin", "entries", "calendar", "apiKey"]);
     return (this instanceof GoogleCalendar ? this : new GoogleCalendar());
 }
 
@@ -44,7 +44,7 @@ GoogleCalendar.prototype = {
     
     // Request calendar data
     request: function() {
-        var url = "https://www.googleapis.com/calendar/v3/calendars/"+encodeURIComponent(this.options.calendar)+"/events?timeZone="+encodeURIComponent(this.options.timeZone)+"&timeMin="+encodeURIComponent(this.options.timeMin)+"&maxResults="+encodeURIComponent(this.options.entriesMax)+"&singleEvents=true&orderBy=startTime&fields=items(description%2Csummary%2Clocation%2Cstart)&key="+encodeURIComponent(this.options.apiKey);
+        var url = "https://www.googleapis.com/calendar/v3/calendars/"+encodeURIComponent(this.options.calendar)+"/events?timeZone="+encodeURIComponent(this.options.timeZone)+"&timeMin="+encodeURIComponent(this.options.timeMin)+"&maxResults="+encodeURIComponent(this.options.entries)+"&singleEvents=true&orderBy=startTime&fields=items(description%2Csummary%2Clocation%2Cstart)&key="+encodeURIComponent(this.options.apiKey);
         switch (this.options.mode) {
             case "events":  this.requestUrl(url, this.onShowEvents, this.onShowError); break;
         }
