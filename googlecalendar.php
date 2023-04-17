@@ -2,7 +2,7 @@
 // Googlecalendar extension, https://github.com/annaesvensson/yellow-googlecalendar
 
 class YellowGooglecalendar {
-    const VERSION = "0.8.16";
+    const VERSION = "0.8.17";
     public $yellow;         // access to API
     
     // Handle initialisation
@@ -19,6 +19,9 @@ class YellowGooglecalendar {
         if (($name=="googlecalendarweek" || $name=="googlecalendarmonth") && ($type=="block" || $type=="inline")) {
             list($id, $theme, $style, $width, $height) = $this->yellow->toolbox->getTextArguments($text);
             if (is_string_empty($style)) $style = $this->yellow->system->get("googlecalendarStyle");
+            if (is_string_empty($height)) $height = $width;
+            $width = $this->convertValueAndUnit($width, 640);
+            $height = $this->convertValueAndUnit($height, 360);
             $timestamp = time();
             $mode = $name=="googlecalendarweek" ? "week" : "month";
             $language = $page->get("language");
@@ -83,5 +86,16 @@ class YellowGooglecalendar {
     public function getCalendarStart($weekdays, $weekstart) {
         $index = array_search($weekstart, preg_split("/\s*,\s*/", $weekdays));
         return 1+(($index+1)%7);
+    }
+    
+    // Return value according to unit
+    public function convertValueAndUnit($text, $valueBase) {
+        $value = $unit = "";
+        if (preg_match("/([\d\.]+)(\S*)/", $text, $matches)) {
+            $value = $matches[1];
+            $unit = $matches[2];
+            if ($unit=="%") $value = $valueBase * $value / 100;
+        }
+        return intval($value);
     }
 }
